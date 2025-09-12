@@ -1,0 +1,56 @@
+@startuml
+left to right direction
+
+rectangle "Ensemble App" as ea{
+    (RUD groupes, utilisateurs, fichies) as rud
+rectangle "Mode utilisateur" as mm{
+    (Créer chorale/Créer group musicien.en.s - 4 p./groupe..) as ccm
+}
+rectangle "Mode admin" as ma{
+    (CRUD chorale/groupe musicien.en.s - 4 p./groupe..) as cca
+    (CRUD morceau) as mora
+    (ARUD user) as aus
+    (ARUD fichier) as af
+}
+rectangle "Mode membre" as mu{
+    (consulter chorale/groupe mus) as cu
+    (ARUD son fichier) as afu
+    #LightBlue(ajouter des commentaires à n importe quel document lié à ce groupe) as ac
+    #LightBlue(écouter des fichiers audio tel que mp3 dans l'app) as eau
+    #LightBlue(écouter/regarder de l’audio/vidéo en ligne) as erl
+    #LightBlue(écouter des fichiers Musescore) as em
+    #Brown(écouter des fichiers TuxGuitar) as et
+    #Brown(partager des fichiers entre groupes) as pg
+}
+
+}
+
+:superadmin: as sa
+:admin/chef: as a
+:utilisateur: as m 
+:membre: as u
+
+sa--rud
+
+a--cca
+a -- aus
+a -- mora
+a -- af
+
+u--cu
+u -- afu
+u -- ac
+u -- eau
+u -- erl
+u -- em
+u --et
+u -- pg
+
+m -- ccm
+
+m <|-right- u
+u <|-right- a
+m <|-left[hidden]- sa
+
+
+@enduml
