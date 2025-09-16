@@ -1,4 +1,4 @@
-# SCORE MANAGEMENT
+# SCORE MANAGMENT
 
 ## description :
 
