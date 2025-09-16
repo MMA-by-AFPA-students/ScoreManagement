@@ -1,0 +1,91 @@
+@startuml
+skinparam ConditionEndStyle hline
+repeat :start
+backward:Créer Compte;
+repeat while (t'a compte ?) is (non)
+->yes;
+:Log in;
+if (UTILISATEUR\n\nt'est invité ?) is (oui) then
+label lab1
+label lab2
+label lab3
+label lab4
+label lab5
+label lab6
+label lab7
+label lab8
+:MEMBRE;
+switch (t'est dans une des groupe)
+case ()
+    #DarkGray:revenir sur la page d'acceuille;
+    kill
+case ()
+    :page morceau;
+    split
+        :consulter fichiers\nde cette groupe;
+    split again
+        :ARUD tes fichiers;
+    end split
+                switch (type)
+                case()
+                    :png ?;
+                case()
+                    :PDF;
+                    
+                case()
+                    #LightBlue:mp3;
+                case()
+                    #LightBlue:Musescore;
+                case()
+                    #Brown:TuxGuitar;
+                    endswitch
+case()
+    :page morceau ou consulter fichier;
+    #LightBlue:CRUD commentaires à tous fichiers de cette groupe;
+case()
+    :page morceau;
+    #LightBlue:écouter/regarder audio/video en ligne;
+case()
+    :page morceau;
+    #Brown:partager des moreaux entre ensembles;
+
+
+
+endswitch
+else (non)
+#DarkGray:page d'acceuille;
+if (t'a une ou qq\ngroupe.s existante.s ?) then (oui)
+if (droits dans la groupe ?) then
+:MEMBRE;
+goto lab8
+elseif () then ()
+switch(ADMIN)
+case()
+    :RU groupe;
+case()
+    :CRUD uilisateurs;
+case()
+    :CRUD morceaux;
+case()
+    :page morceau;
+    :(consulter fichier ?);
+    :CRUD fichiers;
+endswitch
+else ()
+switch(CREATEUR)
+case()
+    :droits admin;
+case()
+    #PaleVioletRed:partager droits admin;
+case()
+    #red:supprimer la groupe;
+
+endswitch
+endif
+else (non)
+:Créer groupe;
+endif
+endif
+#DarkGray:revenir sur la page d'aqueille;
+stop
+@enduml

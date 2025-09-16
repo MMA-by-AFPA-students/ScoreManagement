@@ -15,7 +15,7 @@ rectangle "Mode admin" as ma{
 rectangle "Mode membre" as mu{
     (consulter chorale/groupe mus) as cu
     (ARUD son fichier) as afu
-    #LightBlue(ajouter des commentaires à n importe quel document lié à ce groupe) as ac
+    #LightBlue(CRUD commentaires à n importe quel document lié à ce groupe) as ac
     #LightBlue(écouter des fichiers audio tel que mp3 dans l'app) as eau
     #LightBlue(écouter/regarder de l’audio/vidéo en ligne) as erl
     #LightBlue(écouter des fichiers Musescore) as em
