@@ -7,7 +7,7 @@
       <x>170</x>
       <y>40</y>
       <w>850</w>
-      <h>690</h>
+      <h>580</h>
     </coordinates>
     <panel_attributes>System
 valign=top</panel_attributes>
@@ -165,10 +165,11 @@ type=decision</panel_attributes>
     <coordinates>
       <x>640</x>
       <y>430</y>
-      <w>30</w>
+      <w>100</w>
       <h>60</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;-
+[non-inscrit]</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -186,12 +187,13 @@ type=decision</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>660</x>
-      <y>410</y>
+      <y>400</y>
       <w>230</w>
-      <h>130</h>
+      <h>140</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>210.0;110.0;210.0;10.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;-
+[inscrit]</panel_attributes>
+    <additional_attributes>210.0;120.0;210.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
