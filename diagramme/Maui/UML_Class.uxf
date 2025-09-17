@@ -41,7 +41,7 @@ ENSEMBLE
 - id : Integer
 - nom : String
 - date_création : Date
-- membres : List&lt;User&gt;
+- membres : List&lt;Inscription&gt;
 - instruments : List&lt;Instrument&gt;
 - morceaux : List&lt;Morceau&gt;</panel_attributes>
     <additional_attributes/>
