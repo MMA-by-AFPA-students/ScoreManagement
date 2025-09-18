@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>7</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLHierarchy</id>
     <coordinates>
-      <x>343</x>
-      <y>0</y>
-      <w>294</w>
-      <h>1211</h>
+      <x>297</x>
+      <y>90</y>
+      <w>378</w>
+      <h>1611</h>
     </coordinates>
     <panel_attributes>type=Package
 root
@@ -20,6 +20,7 @@ root
 		UI.Comments
 	Backend
 		config
+			SecurityConfig
 		entities
 			Users
 			Groups
@@ -43,7 +44,9 @@ root
 			GroupsController
 			MusicsController
 		Services
-			AuthServices
+			Auth
+				AuthService
+				????
 			UsersServices
 			GroupsServices
 			InstrumentsServices
