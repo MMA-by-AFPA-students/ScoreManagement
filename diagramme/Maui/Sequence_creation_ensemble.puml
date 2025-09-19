@@ -1,0 +1,74 @@
+@startuml
+title Invitation sécurisée d’un utilisateur (version BDD enrichie)
+
+actor "Créateur de groupe" as creator
+participant "Frontend React" as FE
+participant "Backend Controller" as BC
+participant "Service Invitation" as SI
+participant "Service User" as SU
+participant "Service Mail" as SM
+database "PostgreSQL" as DB
+actor "Invité (navigateur)" as invitee
+
+creator -> FE : Saisit email + clique "Inviter"
+FE -> BC : POST /api/groups/{groupId}/invite\n{ email: "x@y.com" }
+BC -> SI : createInvitation(email, groupId)
+
+SI -> SU : findUserByEmail(email)
+alt Utilisateur existe
+    SU --> SI : User{id, email, ...}
+    SI -> DB : INSERT INTO invitation \n(email, id_group, status, token, expires_at, id_user_invited)\nVALUES (..., 'PENDING', uuid, now+7j, userId)
+    SI -> SM : sendEmail(email,\n"Rejoignez le groupe !",\nlien = /invitation/accept?token=xxx)
+else Utilisateur n'existe pas
+    SU --> SI : null
+    SI -> DB : INSERT INTO invitation \n(email, id_group, status, token, expires_at)\nVALUES (..., 'PENDING', uuid, now+7j, NULL)
+    SI -> SM : sendEmail(email,\n"Créez un compte pour rejoindre !",\nlien = /signup?invitation_token=xxx)
+end
+
+SM --> invitee : Envoie e-mail avec lien sécurisé
+
+== Invitation acceptée ==
+
+invitee -> FE : Clique sur le lien reçu
+
+alt Lien de type "/invitation/accept?token=xxx"
+    FE -> BC : GET /api/invitations/accept?token=xxx
+    BC -> SI : acceptInvitation(token)
+
+    SI -> DB : SELECT * FROM invitation WHERE token = xxx AND expires_at > NOW() AND status = 'PENDING'
+    alt Invitation invalide/expirée
+        SI --> BC : 400 / 410 (Bad Request / Gone)
+        BC --> FE : Affiche erreur
+    else Invitation valide
+        SI -> SU : getUserById(invitation.id_user_invited) OU findUserByEmail(invitation.email)
+        alt Utilisateur connecté ET correspond à l'email
+            SU --> SI : User{id}
+            SI -> DB : INSERT INTO inscription (id_group, id_user, role, join)\nVALUES (invitation.id_group, user.id, 'MEMBER', NOW())
+            SI -> DB : UPDATE invitation SET status='ACCEPTED' WHERE token=xxx
+            SI --> BC : 200 + redirectURL = /group/{id}
+        else Utilisateur non connecté ou non trouvé
+            SI --> BC : 302 Redirect → /signup?invitation_token=xxx
+        end
+    end
+
+else Lien de type "/signup?invitation_token=xxx"
+    FE --> invitee : Affiche formulaire d'inscription
+    invitee -> FE : Remplit formulaire + soumet
+    FE -> BC : POST /api/auth/signup-with-invitation\n{ email, password, ..., invitationToken }
+    BC -> SI : processSignupWithInvitation(data)
+
+    SI -> DB : SELECT * FROM invitation WHERE token = xxx AND status = 'PENDING' AND expires_at > NOW()
+    alt Token invalide
+        SI --> BC : 400
+    else Token valide
+        SI -> DB : INSERT INTO "user" (...) RETURNING id
+        SI -> DB : INSERT INTO inscription (id_group, id_user, role, join)\nVALUES (invitation.id_group, newUser.id, 'MEMBER', NOW())
+        SI -> DB : UPDATE invitation SET status='ACCEPTED', id_user_invited=newUser.id WHERE token=xxx
+        SI --> BC : 201 + JWT + redirectURL = /group/{id}
+    end
+end
+
+BC --> FE : Redirige ou connecte l'utilisateur
+FE --> invitee : Affiche page du groupe → ✅ Succès !
+
+@enduml
