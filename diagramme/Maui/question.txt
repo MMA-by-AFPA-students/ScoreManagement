@@ -1,0 +1,18 @@
+question :
+
+- quel est la meilleur méthode entre :
+
+    - établir une table permettant de sauvegarder un token pour pouvoir comparer ultérieurement 
+    sur celle retourné par le lien de l'utilisateur (lien envoyé par mail à l'utilisateur)
+    après comparaison, passer le boolean is_verified de la table user en "true" => cela reviendrai
+    à recréer une table validation qui aura le token (et une date d'expiration)
+    - récupérer le token du lien (lien envoyé par mail à l'utilisateur), le comparer en le 
+    déchiffrant avec les informations de l'utilisateur et passer l'attribut prévu en "true"
+
+    Réponse : Analyser en déchiffrant le token et le comporant (pas de table validation)
+
+
+- comment gérer la suppression de compte (via l'utilisateur) et faire en sorte de garder les éléments
+pendant X temps (faire un tour)
+
+Réponse : Planifier les tâches de maintenance

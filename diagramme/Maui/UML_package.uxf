@@ -5,66 +5,66 @@
     <id>UMLHierarchy</id>
     <coordinates>
       <x>297</x>
-      <y>90</y>
+      <y>0</y>
       <w>378</w>
       <h>1611</h>
     </coordinates>
     <panel_attributes>type=Package
 root
-	Frontend
+	frontend
 		UI.Authentication
-		UI.Users
-		UI.Groups
-		UI.Musics
-		UI.Documents
-		UI.Comments
-	Backend
+		UI.User
+		UI.Group
+		UI.Music
+		UI.Document
+		UI.Comment
+	backend
 		config
 			SecurityConfig
 		entities
-			Users
-			Groups
-			Instruments
-			Musics
-			Types
-			Documents
-			Comments
-			Inscriptions
+			User
+			Group
+			Instrument
+			Music
+			Type
+			Document
+			Comment
+			Inscription
 		dto
-			UsersDTO
-			GroupsDTO
-			InstrumentsDTO
-			MusicsDTO
-			TypesDTO
-			DocumentsDTO
-			CommentsDTO
-			InscriptionsDTO
+			UserDTO
+			GroupDTO
+			InstrumentDTO
+			MusicDTO
+			TypeDTO
+			DocumentDTO
+			CommentDTO
+			InscriptionDTO
 		controllers
 			AuthController
-			GroupsController
-			MusicsController
-		Services
-			Auth
-				AuthService
+			GroupController
+			MusicController
+		services
+			auth
+				JwtService
 				????
-			UsersServices
-			GroupsServices
-			InstrumentsServices
-			MuicsService
-			TypesService
-			DocumentsService
-			CommentsService
-			InscriptionsService
-	Database
-		Users
-		Groups
-		Instruments
-		Musics
-		Types
-		Documents
-		Comments
-		Inscriptions
-		Groups-Instruments</panel_attributes>
+			UserService
+			GroupService
+			InstrumentService
+			MuicService
+			TypeService
+			DocumentService
+			CommentService
+			InscriptionService
+	database
+		user
+		uroup
+		unstrument
+		music
+		type
+		document
+		comment
+		inscription
+		group_instrument</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
