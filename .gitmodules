@@ -1,3 +1,6 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/MMA-by-AFPA-students/Backend_ScoreManagment
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:MMA-by-AFPA-students/Front_ScoreManagment.git
