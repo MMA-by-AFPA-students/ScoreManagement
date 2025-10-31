@@ -51,7 +51,7 @@ Pour que cela fonctionne il faut modifier deux choses :
 
 ## Configuration SSH serveur
 
-**Sur le serveur**, une configuration SSH doit être ajoutée, la voici (ce fichier est contenu dans le /home/<utilisateur>/.ssh) :
+**Sur le serveur**, une configuration SSH doit être ajoutée, la voici (ce fichier est contenu dans le /home/nom-utilisateur/.ssh) :
 ```conf
 # Clé pour le dépôt principal
 Host github.com
