@@ -1,9 +1,0 @@
-[submodule "backend"]
-	path = backend
-	url = https://github.com/MMA-by-AFPA-students/Backend_ScoreManagment
-[submodule "frontend"]
-	path = frontend
-	url = https://github.com/MMA-by-AFPA-students/Front_ScoreManagment.git
-[submodule "db_scoremanagment"]
-	path = db_scoremanagment
-	url = https://github.com/MMA-by-AFPA-students/db_scoremanagment
