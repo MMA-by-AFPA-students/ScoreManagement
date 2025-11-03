@@ -3,7 +3,7 @@ services:
   # TODO
   scoremanagment_front:
     build : 
-      context : ./front
+      context : ./Front_ScoreManagment
       
     # Ci-dessous la redirection du port à décommenter pour les tests en local
     # ports:
@@ -18,7 +18,7 @@ services:
   # TODO
   scoremanagment_api:
     build : 
-      context : ./back
+      context : ./Backend_ScoreManagment
 
     # Ci-dessous la redirection du port à décommenter pour les tests en local
     # ports:
@@ -72,7 +72,7 @@ services:
     volumes:
       # TODO ajout des volumes pour création automatique de la base de données à la création du conteneur
       # Attention, un dossier "db" doit être créé et contenir les scripts de création
-      - ./db/:/docker-entrypoint-initdb.d/
+      - ./db_scoremanagment/:/docker-entrypoint-initdb.d/
 
   # Le service suivant correspond au "reverse proxy"
   # -> le serveur HTTP de type "nginx" agit comme un reverse proxy
