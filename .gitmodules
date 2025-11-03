@@ -1,9 +1,9 @@
 [submodule "Backend_ScoreManagment"]
 	path = Backend_ScoreManagment
-	url = git@github.com:MMA-by-AFPA-students/Backend_ScoreManagment.git
+	url = git@github.com-back:MMA-by-AFPA-students/Backend_ScoreManagment.git
 [submodule "Front_ScoreManagment"]
 	path = Front_ScoreManagment
-	url = git@github.com:MMA-by-AFPA-students/Front_ScoreManagment.git
+	url = git@github.com-front:MMA-by-AFPA-students/Front_ScoreManagment.git
 [submodule "db_scoremanagment"]
 	path = db_scoremanagment
-	url = git@github.com:MMA-by-AFPA-students/db_scoremanagment.git
+	url = git@github.com-db:MMA-by-AFPA-students/db_scoremanagment.git
